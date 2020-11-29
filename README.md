@@ -61,12 +61,12 @@ For web app
 ```cs
 internal static IHostBuilder CreateHostBuilder(string[] args) =>
       Host.CreateDefaultBuilder(args)
-            .AddAbpAsyncApplicationLifecycle<WebAppWebModule>()
++++         .AddAbpAsyncApplicationLifecycle<WebAppWebModule>()
             .ConfigureWebHostDefaults(webBuilder =>
             {
                   webBuilder.UseStartup<Startup>();
             })
-            .UseAbpAsyncApplicationLifecycle()
++++         .UseAbpAsyncApplicationLifecycle()
             .UseAutofac()
             .UseSerilog();
 ```
@@ -140,12 +140,12 @@ internal static IHostBuilder CreateHostBuilder(string[] args) =>
       Host.CreateDefaultBuilder(args)
             .UseAutofac()
             .UseSerilog()
-            .AddAbpAsyncApplicationLifecycle<ConsoleAppModule>()
++++         .AddAbpAsyncApplicationLifecycle<ConsoleAppModule>()
             .ConfigureServices((hostContext, services) =>
             {
                   services.AddApplication<ConsoleAppModule>();
             })
-            .UseAbpAsyncApplicationLifecycle();
++++         .UseAbpAsyncApplicationLifecycle();
 ```
 
 Console app start and stop output:
