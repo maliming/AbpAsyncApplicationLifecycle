@@ -2,7 +2,7 @@
 
 ### Introduction
 
-The principle of this library is to add a new `HostedService`. And execute async methods(StartAsync/StopAsync).
+The principle of this library is to add a new `HostedService`. And execute async methods(`StartAsync/StopAsync`).
 
 Only need to implement the `IAbpAsyncApplicationLifecycle` interface.  If the Abp module implements the interface, the async method will be executed in the order of dependency of the module.
 
@@ -61,7 +61,7 @@ For web app
 ```cs
 internal static IHostBuilder CreateHostBuilder(string[] args) =>
       Host.CreateDefaultBuilder(args)
-+++         .AddAbpAsyncApplicationLifecycle<WebAppWebModule>()
++++         .ConfigureAbpAsyncApplicationLifecycle()
             .ConfigureWebHostDefaults(webBuilder =>
             {
                   webBuilder.UseStartup<Startup>();
@@ -74,7 +74,7 @@ internal static IHostBuilder CreateHostBuilder(string[] args) =>
 Web app start and stop output:
 ```cs
 [21:27:17 INF] Starting web host.
-[21:27:17 INF] User profile is available. Using 'C:\Users\maliming\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[21:27:17 INF] User profile is available. Using 'DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 [21:27:17 INF] Loaded ABP modules:
 [21:27:17 INF] - Volo.Abp.Castle.AbpCastleCoreModule
 [21:27:17 INF] - Volo.Abp.Autofac.AbpAutofacModule
@@ -140,7 +140,7 @@ internal static IHostBuilder CreateHostBuilder(string[] args) =>
       Host.CreateDefaultBuilder(args)
             .UseAutofac()
             .UseSerilog()
-+++         .AddAbpAsyncApplicationLifecycle<ConsoleAppModule>()
++++         .ConfigureAbpAsyncApplicationLifecycle()
             .ConfigureServices((hostContext, services) =>
             {
                   services.AddApplication<ConsoleAppModule>();
@@ -157,7 +157,6 @@ Console app start and stop output:
 [21:28:32 INF] - SharedModule.MyModule
 [21:28:32 INF] - ConsoleApp.ConsoleAppModule
 [21:28:32 INF] Initialized all ABP modules.
-[21:28:32 INF] ConsoleAppHostedService.StartAsync
 
 [21:28:32 ERR] MyModule.StartAsync
 [21:28:32 ERR] ConsoleAppModule.StartAsync
@@ -171,7 +170,6 @@ Console app start and stop output:
 [21:28:34 ERR] MyModule.StopAsync
 [21:28:34 ERR] ConsoleAppModule.StopAsync
 [21:28:34 ERR] MyService.StopAsync
-[21:28:34 INF] ConsoleAppHostedService.StopAsync
 
 Process finished with exit code 0.
 ```

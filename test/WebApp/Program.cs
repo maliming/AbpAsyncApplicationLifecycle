@@ -42,7 +42,7 @@ namespace WebApp.Web
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .AddAbpAsyncApplicationLifecycle<WebAppWebModule>()
+                .ConfigureAbpAsyncApplicationLifecycle()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

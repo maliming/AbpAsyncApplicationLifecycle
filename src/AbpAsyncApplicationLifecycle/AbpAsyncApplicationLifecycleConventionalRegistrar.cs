@@ -11,8 +11,9 @@ namespace AbpAsyncApplicationLifecycle
         {
             if (typeof(IAbpAsyncApplicationLifecycle).IsAssignableFrom(type))
             {
-                var lifeTime = GetLifeTimeOrNull(type, GetDependencyAttributeOrNull(type));
-                services.TryAddEnumerable(new ServiceDescriptor(typeof(IAbpAsyncApplicationLifecycle), type, lifeTime ?? ServiceLifetime.Transient));
+                services.TryAddEnumerable(new ServiceDescriptor(typeof(IAbpAsyncApplicationLifecycle),
+                    type,
+                    GetLifeTimeOrNull(type, GetDependencyAttributeOrNull(type)) ?? ServiceLifetime.Transient));
             }
         }
     }

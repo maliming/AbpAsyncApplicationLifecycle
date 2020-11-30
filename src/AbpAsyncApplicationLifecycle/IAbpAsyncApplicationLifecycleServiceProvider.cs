@@ -5,6 +5,6 @@ namespace AbpAsyncApplicationLifecycle
 {
     public interface IAbpAsyncApplicationLifecycleServiceProvider
     {
-        IEnumerable<IAbpAsyncApplicationLifecycle> GetServices(IServiceProvider serviceProvider);
+        IEnumerable<IAbpAsyncApplicationLifecycle> GetServices(IServiceProvider serviceProvider, Type startupModuleType);
     }
 }

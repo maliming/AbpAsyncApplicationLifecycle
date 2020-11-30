@@ -1,10 +1,9 @@
-﻿namespace WebApp.Web.Pages
+﻿using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
+
+namespace WebApp.Web.Pages
 {
-    public class IndexModel : WebAppPageModel
+    public class IndexModel : AbpPageModel
     {
-        public void OnGet()
-        {
-            
-        }
+
     }
 }

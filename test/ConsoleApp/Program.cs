@@ -45,7 +45,7 @@ namespace ConsoleApp
             Host.CreateDefaultBuilder(args)
                 .UseAutofac()
                 .UseSerilog()
-                .AddAbpAsyncApplicationLifecycle<ConsoleAppModule>()
+                .ConfigureAbpAsyncApplicationLifecycle()
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddApplication<ConsoleAppModule>();
